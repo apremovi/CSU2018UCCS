@@ -1,0 +1,4 @@
+data_rate = 1000kbps
+Master Mode
+The device sends 8 bits of command, then sends 8 clocks to recieve the response
+
