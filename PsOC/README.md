@@ -1,0 +1,41 @@
+Setup
+
+1. Navigate to WICED-Studio-6.2\43xxx_Wi-Fi\apps\demo and create a new folder called "Smart_Meter_PSoC6_Webserver"
+Copy the following files to that folder:
+  Smart_Meter_PSoC6_Webserver.c
+  Smart_Meter_PSoC6_Webserver.h
+  Smart_Meter_PSoC6_Webserver.mk
+  cy_tft_display.c
+  cy_tft_display.h
+
+2. Navigate to WICED-Studio-6.2\43xxx_Wi-Fi\resources\apps and again create a new folder called "Smart_Meter_PSoC6_Webserver"
+Copy the following files to that folder:
+  data.html
+  main.html
+
+3. Open WICED 6.2
+
+4. Plug the CY8CKIT-062-WiFi-BT kit board into your computer’s USB port.
+
+5. Ensure that LED2 on the CY8CKIT-062-WiFi-BT is off. If it is not, press SW3 “mode select.”
+
+6. In the Make Target window, right-click and select New, and give it the following Target Name:
+  demo.Smart_Meter_PSoC6_Webserver-CY8CKIT_062 download_apps download run
+
+7. Double-click the newly created make target to build the code, program the kit, and run the example. Note that this may take a few minutes.
+
+9. After the project is downloaded, the TFT LCD prints out instructions. The device starts a WiFi Access Point (AP). This AP allows you to select your own WiFi network to be used for the rest of the demo.
+
+10. Using another device (laptop, PC, mobile phone, tablet), connect to the following WiFi network:
+  ssid: WICED Config
+  password: 12345678
+
+11. Once connected, open a web browser and type 192.168.0.1. The device configuration webpage will appear.
+
+12. Click the Wi-Fi Setup button; a page appears listing the available WiFi networks.
+
+13. Select the network you wish to connect to, enter your password, and click Connect. After this, the device turn off its AP and connects to the network selected, connects to a time server, and servers an HTTP page.
+Note: If for some reason you enter an incorrect password, the Terminal/LCD indicates a failure to connect. Pressing and holding SW2 for 1 second erases the saved password, at which point you must reset the device and follow all the steps again.
+
+14. Next, on a device connected to the same network as selected in step 13, open a web browser and type the IP address shown on the LCD output. The HTTP page will appear:
+Note: If your WiFi network does not have internet access, then the data will start at 1970-01-01 and the time will start at 00:00:00.
