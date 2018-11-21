@@ -65,3 +65,15 @@ Note: If for some reason you enter an incorrect password, the Terminal/LCD indic
 13. Next, on a device connected to the same network as selected in step 13, open a web browser and type the IP address shown on the LCD output. The HTTP page will appear:
 
 Note: If your WiFi network does not have internet access, then the data will start at 1970-01-01 and the time will start at 00:00:00.
+
+
+Mac Address (in \WICED-Studio-6.2\43xxx_Wi-Fi\generated_mac_address.txt)
+/* 
+ * The MAC address of the Wi-Fi device may be configured in one of several places as 
+ * described in the document WICED-AN800-R Factory Programming Application Note.     
+ * Please read this document for further information.                                
+ */
+
+#define NVRAM_GENERATED_MAC_ADDRESS        "macaddr=00:A0:50:1b:ee:dd"
+#define DCT_GENERATED_MAC_ADDRESS          "\x00\xA0\x50\xdd\x1b\xee"
+#define DCT_GENERATED_ETHERNET_MAC_ADDRESS "\x00\xA0\x50\xdd\x1b\xef"
