@@ -31,7 +31,7 @@
 
 
 #define SPI_CLOCK_SPEED_HZ             (1000000)
-#define SPI_BIT_WIDTH                  ( 8 )
+#define SPI_BIT_WIDTH                  ( 16 )
 #define SPI_MODE                       ( SPI_CLOCK_RISING_EDGE | SPI_CLOCK_IDLE_LOW | SPI_MSB_FIRST ) //vnak
 
 
@@ -52,11 +52,11 @@ const uint16_t nsegments = 1;
 
 void application_start( void )
 {
-    uint16_t nsegments = 1;
+    uint16_t nsegments = 2;
 
     uint32_t a = 0;
     wiced_spi_message_segment_t message[1];
-    uint8_t txbuf[2] , rxbuf[1];
+    uint8_t txbuf[2] , rxbuf[2];
     wiced_core_init();
 
     WPRINT_APP_INFO(("\nThe clock currently used is %u \n" , SPI_CLOCK_SPEED_HZ));
@@ -64,8 +64,8 @@ void application_start( void )
     if(wiced_spi_init (&spi_device) != WICED_SUCCESS)
     {
         WPRINT_APP_INFO(("SPI init failed \n")); }
-        txbuf[0] = 0x55;
-        txbuf[1] = 0x5F;
+        txbuf[0] = 0x27;
+        txbuf[1] = 0x00;
         message[0].tx_buffer = txbuf;
         message[0].rx_buffer = rxbuf;
         message[0].length = 2;
@@ -78,12 +78,13 @@ void application_start( void )
         }
 
 
-        WPRINT_APP_INFO( ("\nTransferred 0x%x\n", *((uint8_t *)message[0].tx_buffer)) );
+        WPRINT_APP_INFO( ("\nTransferred 0x%x\n", txbuf[0] ));
         //WPRINT_APP_INFO( ("Transferred 0x%x\n", *(((uint8_t *)message[0].tx_buffer))+1) );
 
 
 
-        WPRINT_APP_INFO( ("\nReceived    0x%x\n\n",*(( uint8_t *)message[0].rx_buffer ) ) );
+        WPRINT_APP_INFO( ("\nReceived    0x%x\n",rxbuf[0] ));
+        WPRINT_APP_INFO( ("\nReceived    0x%x\n\n",rxbuf[1] ));
 
         wiced_rtos_delay_microseconds(15);
         wiced_spi_deinit( &spi_device );
