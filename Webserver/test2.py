@@ -20,7 +20,7 @@ app.layout = html.Div(
 
         dcc.Interval(
             id='interval-component', #this is how we're going to trigger an event to occur. An event that has the id of graph-update, but it's an interval
-            interval= 2000, # in milliseconds #update every 30 second or 3000 ms this graph is going to run with the id = update graph
+            interval= 200, # in milliseconds #update every 30 second or 3000 ms this graph is going to run with the id = update graph
             n_intervals=0
         )
     ])
@@ -45,7 +45,7 @@ def update_graph_live(n): #defines the actual function intself. #The wrapper its
                 'layout': go.Layout (
                             title= datetime.datetime.now().strftime('DATE: %m-%d-%Y'),
                 xaxis={'title': 'Time(UTC)'},
-                yaxis={'title': 'Energy Consumption(kW)'},
+                yaxis={'title': 'Energy Consumption(W)'},
                 
             )
                             
